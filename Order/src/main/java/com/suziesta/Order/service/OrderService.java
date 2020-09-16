@@ -9,4 +9,6 @@ public interface OrderService {
     boolean saveOrder(Order order) throws JsonProcessingException;
 
     List<Order> getOrderDetails(String id);
+
+    boolean deleteOrder(String id);
 }

@@ -26,4 +26,9 @@ public class OrderController {
     public List<Order> getOrder(@PathVariable String id){
         return orderService.getOrderDetails(id);
     }
+
+    @DeleteMapping("/order/{id}")
+    public boolean deleteOrder(@PathVariable String id){
+        return orderService.deleteOrder(id);
+    }
 }

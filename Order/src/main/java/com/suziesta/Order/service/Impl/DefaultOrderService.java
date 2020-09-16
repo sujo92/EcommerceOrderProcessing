@@ -25,4 +25,10 @@ public class DefaultOrderService implements OrderService {
     public List<Order> getOrderDetails(String id) {
         return orderRepository.findAllbyId(id);
     }
+
+    @Override
+    public boolean deleteOrder(String id) {
+        orderRepository.deleteById(id);
+        return true;
+    }
 }

@@ -21,6 +21,14 @@ public class Order implements Serializable {
     @JoinColumn(name="order_id", referencedColumnName = "order_id")
     private List<Item> items;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="order_id", referencedColumnName = "order_id")
+    private  List<Payments> payments;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="shipping_id")
+    private Shipping shipping;
+
     public Order(){
         this.orderId = UUID.randomUUID().toString();
     }
