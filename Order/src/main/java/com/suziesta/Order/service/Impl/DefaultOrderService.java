@@ -7,6 +7,7 @@ import com.suziesta.Order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -29,6 +30,15 @@ public class DefaultOrderService implements OrderService {
     @Override
     public boolean deleteOrder(String id) {
         orderRepository.deleteById(id);
+        return true;
+    }
+
+    @Override
+    @Transactional
+    public boolean updateOrder(Order order) {
+        System.out.println("orderservice: status update");
+        System.out.println(order.getOrderId()+" : "+order.getStatus());
+        orderRepository.updateStatus(order.getStatus() , order.getOrderId());
         return true;
     }
 }
