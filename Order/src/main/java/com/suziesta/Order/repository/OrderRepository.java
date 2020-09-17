@@ -16,7 +16,7 @@ public interface OrderRepository extends CrudRepository<Order, String> {
     public List<Order> findAllbyId(@Param("id") String id);
 
     @Modifying
-    @Query("update Order o set o.status = :statusId where o.id = :id")
-    public void updateStatus(@Param("statusId") String statusId, @Param("id") String id);
+    @Query("update Order o set o.status = :status where o.id = :id")
+    public void updateStatus(@Param("status") String status, @Param("id") String id);
 
 }
