@@ -5,5 +5,6 @@ import com.suziesta.BulkOrder.model.Order;
 
 public interface BulkOrderService {
     boolean saveOrder(Order[] order) throws JsonProcessingException;
-    boolean updateOrders(String statusId, Order[] orders);
+    boolean updateOrders(String statusId, Order[] orders) throws JsonProcessingException;
+
 }

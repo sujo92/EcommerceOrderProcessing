@@ -1,4 +1,4 @@
-package com.suziesta.Order.exceptions;
+package com.suziesta.BulkOrder.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

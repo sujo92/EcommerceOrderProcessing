@@ -1,5 +1,7 @@
 package com.suziesta.BulkOrder.config;
 
+import com.amazonaws.services.sns.AmazonSNS;
+import org.springframework.cloud.aws.messaging.core.NotificationMessagingTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -14,9 +16,9 @@ public class AppConfig {
         return new RestTemplate();
     }
 
-//    @Bean
-//    public NotificationMessagingTemplate notificationMessagingTemplate(AmazonSNS amazonSNS){
-//        return new NotificationMessagingTemplate(amazonSNS);
-//    }
+    @Bean
+    public NotificationMessagingTemplate notificationMessagingTemplate(AmazonSNS amazonSNS){
+        return new NotificationMessagingTemplate(amazonSNS);
+    }
 
 }

@@ -17,12 +17,13 @@ public class BulkOrderController {
     @PostMapping("/order")
     @ApiOperation(value = "add order")
     public boolean createOrders(@RequestBody Order[] order) throws JsonProcessingException {
+        System.out.println("Create orders called");
         orderService.saveOrder(order);
         return true;
     }
 
     @PutMapping("/status/{statusId}")
-    public boolean updateOrders(@PathVariable String statusId, @RequestBody Order[] orders){
+    public boolean updateOrders(@PathVariable String statusId, @RequestBody Order[] orders) throws JsonProcessingException {
         System.out.println("status change");
         System.out.println(statusId);
         orderService.updateOrders(statusId, orders);
