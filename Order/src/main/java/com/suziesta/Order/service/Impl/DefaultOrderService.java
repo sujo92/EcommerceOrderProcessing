@@ -38,7 +38,7 @@ public class DefaultOrderService implements OrderService {
     public boolean updateOrder(Order order) {
         System.out.println("orderservice: status update");
         System.out.println(order.getOrderId()+" : "+order.getStatus());
-        orderRepository.updateStatus(order.getStatus() , order.getOrderId());
+        orderRepository.updateStatus(order.getOrderId(),order.getStatus());
         return true;
     }
 }
