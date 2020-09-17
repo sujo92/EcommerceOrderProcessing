@@ -19,7 +19,7 @@ public class OrderController {
 
     @PostMapping("/order")
     @ApiOperation(value = "add order")
-    public boolean addVehicle(@RequestBody Order order) throws JsonProcessingException {
+    public boolean createOrder(@RequestBody Order order) throws JsonProcessingException {
         orderService.saveOrder(order);
         return true;
     }

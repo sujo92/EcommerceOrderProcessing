@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -18,6 +20,10 @@ public class DefaultOrderService implements OrderService {
 
     @Override
     public boolean saveOrder(Order order) throws JsonProcessingException {
+        LocalDateTime now = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(now);
+        order.setCreatedDate(timestamp);
+        order.setModifiedDate(timestamp);
         orderRepository.save(order);
         return true;
     }
@@ -37,8 +43,10 @@ public class DefaultOrderService implements OrderService {
     @Transactional
     public boolean updateOrder(Order order) {
         System.out.println("orderservice: status update");
+        LocalDateTime now = LocalDateTime.now();
+        Timestamp timestamp = Timestamp.valueOf(now);
         System.out.println(order.getOrderId()+" : "+order.getStatus());
-        orderRepository.updateStatus(order.getOrderId(),order.getStatus());
+        orderRepository.updateStatus(order.getOrderId(),timestamp, order.getStatus());
         return true;
     }
 }
