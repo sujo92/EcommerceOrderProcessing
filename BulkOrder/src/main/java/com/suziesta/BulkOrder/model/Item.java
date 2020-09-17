@@ -14,13 +14,13 @@ import java.util.UUID;
 @Table(name = "items")
 public class Item implements Serializable {
     @Id
-    @Column(name="item_id")
+    @Column(name="order_item_id")
     private String id;
-    private Integer articleId;
-    private String articleName;
-    private Integer quantity;
-    private double price;
-    private Integer taxRate;
+    private Integer item_id;
+    private String item_name;
+    private Integer item_qty;
+    private double subtotal;
+    private double tax;
 
     @Column(name="order_id")
     private String orderId;
