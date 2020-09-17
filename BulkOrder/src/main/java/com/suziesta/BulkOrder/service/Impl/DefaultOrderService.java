@@ -31,6 +31,7 @@ public class DefaultOrderService implements BulkOrderService {
 
     @Override
     public boolean saveOrder(Order[] orders) throws JsonProcessingException {
+        System.out.println("service: save order");
         for(Order ord: orders) {
 //            restTemplate.postForObject("http://localhost:8081/app/order", ord, boolean.class);
             String StringOrder = objectMapper.writeValueAsString(ord);
