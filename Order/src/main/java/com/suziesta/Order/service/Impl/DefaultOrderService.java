@@ -1,6 +1,7 @@
 package com.suziesta.Order.service.Impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.suziesta.Order.exceptions.ResourceNotFoundException;
 import com.suziesta.Order.model.Order;
 import com.suziesta.Order.repository.OrderRepository;
 import com.suziesta.Order.service.OrderService;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class DefaultOrderService implements OrderService {
@@ -32,9 +32,9 @@ public class DefaultOrderService implements OrderService {
     }
 
     @Override
-    public List<Order> getOrderDetails(String id) {
-        List<Order> orderList = orderRepository.findAllbyId(id);
-        return orderList;
+    public Order getOrderDetails(String id) {
+        return  orderRepository.findById(id)
+        .orElseThrow(()-> new ResourceNotFoundException("Order with id"+id+"doesnt exist"));
     }
 
     @Override

@@ -5,12 +5,12 @@ import com.suziesta.Order.model.Order;
 import com.suziesta.Order.service.OrderService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/app")
+@ActiveProfiles("prod")
 public class OrderController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class OrderController {
 
     @GetMapping("/order/{id}")
     @ApiOperation(value = "get order by orderid",response= Order.class, responseContainer = "List")
-    public List<Order> getOrder(@PathVariable String id){
+    public Order getOrder(@PathVariable String id){
         return orderService.getOrderDetails(id);
     }
 

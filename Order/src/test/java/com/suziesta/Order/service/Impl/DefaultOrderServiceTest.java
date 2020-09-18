@@ -56,8 +56,8 @@ public class DefaultOrderServiceTest {
 
     @Test
     public void getOrderDetails() {
-        List<Order> result = orderService.getOrderDetails(orderList.get(0).getOrderId());
-        Assert.assertEquals("Order match",orderList, result);
+        Order result = orderService.getOrderDetails(orderList.get(0).getOrderId());
+        Assert.assertEquals("Order match",orderList.get(0), result);
     }
 
     @Test
