@@ -17,7 +17,6 @@ public class OrderApplication {
 //		BulkOrderUpdateListnerSqs bulkOrderUpdateListnerSqs = context.getBean(BulkOrderUpdateListnerSqs.class);
 //		bulkOrderUpdateListnerSqs.startListeningToMessages();
 
-		System.out.println("listen to bulk create");
 		BulkOrderListnerSqs bulkOrderListnerSqs = context.getBean(BulkOrderListnerSqs.class);
 		bulkOrderListnerSqs.startListeningToMessages();
 	}

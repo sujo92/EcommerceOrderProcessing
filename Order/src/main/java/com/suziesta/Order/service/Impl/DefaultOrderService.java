@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.suziesta.Order.model.Order;
 import com.suziesta.Order.repository.OrderRepository;
 import com.suziesta.Order.service.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import java.util.List;
 
 @Service
 public class DefaultOrderService implements OrderService {
+    private Logger log = LoggerFactory.getLogger(DefaultOrderService.class);
 
     @Autowired
     private OrderRepository orderRepository;
@@ -30,7 +33,8 @@ public class DefaultOrderService implements OrderService {
 
     @Override
     public List<Order> getOrderDetails(String id) {
-        return orderRepository.findAllbyId(id);
+        List<Order> orderList = orderRepository.findAllbyId(id);
+        return orderList;
     }
 
     @Override
