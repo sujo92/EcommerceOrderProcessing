@@ -39,17 +39,21 @@ public class DefaultOrderService implements OrderService {
 
     @Override
     public boolean deleteOrder(String id) {
-        orderRepository.deleteById(id);
+        try {
+            orderRepository.deleteById(id);
+        }
+        catch (Exception e){
+            new ResourceNotFoundException("Order with id"+id+"doesnt exist");
+            return false;
+        }
         return true;
     }
 
     @Override
     @Transactional
     public boolean updateOrder(Order order) {
-        System.out.println("orderservice: status update");
         LocalDateTime now = LocalDateTime.now();
         Timestamp timestamp = Timestamp.valueOf(now);
-        System.out.println(order.getOrderId()+" : "+order.getStatus());
         orderRepository.updateStatus(order.getOrderId(),timestamp, order.getStatus());
         return true;
     }

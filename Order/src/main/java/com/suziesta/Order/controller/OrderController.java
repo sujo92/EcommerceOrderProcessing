@@ -38,8 +38,6 @@ public class OrderController {
 
     @PutMapping("/order")
     public boolean updateOrder(@RequestBody Order order){
-//        System.out.println(order);
-        System.out.println("ordercontroller: status update "+order.getOrderId()+":"+order.getStatus());
         return orderService.updateOrder(order);
     }
 }
