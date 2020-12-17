@@ -12,12 +12,6 @@ public class OrderApplication {
 
 		ConfigurableApplicationContext context = SpringApplication.run(OrderApplication.class, args);
 
-//		System.out.println("listen to bulk update");
-//		BulkOrderUpdateListnerSqs bulkOrderUpdateListnerSqs = context.getBean(BulkOrderUpdateListnerSqs.class);
-//		bulkOrderUpdateListnerSqs.startListeningToMessages();
-
-//		BulkOrderListnerSqs bulkOrderListnerSqs = context.getBean(BulkOrderListnerSqs.class);
-//		bulkOrderListnerSqs.startListeningToMessages();
 	}
 
 }
