@@ -7,19 +7,17 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/app")
-//@ActiveProfiles("prod")
 public class OrderController {
 
     private static final Logger LOGGER= LoggerFactory.getLogger(OrderController.class);
 
-
-    @Qualifier("defaultOrderService")
     @Autowired
     private OrderService orderService;
 
@@ -46,7 +44,7 @@ public class OrderController {
 
     @GetMapping("/order/{id}")
     @ApiOperation(value = "get order by orderid",response= Order.class, responseContainer = "List")
-    public Order getOrder(@PathVariable String id){
+    public List<Order> getOrder(@PathVariable String id){
         return orderService.getOrderDetails(id);
     }
 
@@ -58,6 +56,8 @@ public class OrderController {
 
     @PutMapping("/order")
     public boolean updateOrder(@RequestBody Order order){
+//        System.out.println(order);
+        System.out.println("ordercontroller: status update "+order.getOrderId()+":"+order.getStatus());
         return orderService.updateOrder(order);
     }
 }

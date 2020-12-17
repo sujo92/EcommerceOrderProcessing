@@ -1,7 +1,6 @@
 package com.suziesta.Order;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.suziesta.Order.aws.BulkOrderListnerSqs;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -17,8 +16,8 @@ public class OrderApplication {
 //		BulkOrderUpdateListnerSqs bulkOrderUpdateListnerSqs = context.getBean(BulkOrderUpdateListnerSqs.class);
 //		bulkOrderUpdateListnerSqs.startListeningToMessages();
 
-		BulkOrderListnerSqs bulkOrderListnerSqs = context.getBean(BulkOrderListnerSqs.class);
-		bulkOrderListnerSqs.startListeningToMessages();
+//		BulkOrderListnerSqs bulkOrderListnerSqs = context.getBean(BulkOrderListnerSqs.class);
+//		bulkOrderListnerSqs.startListeningToMessages();
 	}
 
 }

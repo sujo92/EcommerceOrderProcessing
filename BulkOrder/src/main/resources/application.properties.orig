@@ -1,0 +1,6 @@
+server.port=8082
+<<<<<<< HEAD
+spring.profiles.active=prod
+=======
+spring.profiles.active=dev
+>>>>>>> feat-1

@@ -7,19 +7,20 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+<<<<<<< HEAD
+import org.springframework.test.context.ActiveProfiles;
+=======
 import org.springframework.kafka.annotation.KafkaListener;
+>>>>>>> feat-1
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/app")
-//@ActiveProfiles("prod")
+@ActiveProfiles("prod")
 public class OrderController {
 
     private static final Logger LOGGER= LoggerFactory.getLogger(OrderController.class);
 
-
-    @Qualifier("defaultOrderService")
     @Autowired
     private OrderService orderService;
 
