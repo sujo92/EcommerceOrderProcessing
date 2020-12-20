@@ -32,6 +32,7 @@ public class OrderController {
 
     @KafkaListener(topics = "${kafka.topic.name.create}", groupId = "${kafka.consumer.group.id1}", containerFactory = "userKafkaListenerContainerFactory")
     public boolean getUser(Order order) throws JsonProcessingException {
+        LOGGER.info("create order received from kafka");
         orderService.saveOrder(order);
         LOGGER.info("Create Order -" + order.toString() + " received");
         return true;
@@ -39,6 +40,7 @@ public class OrderController {
 
     @KafkaListener(topics = "${kafka.topic.name.update}", groupId = "${kafka.consumer.group.id2}", containerFactory = "updateUserKafkaListenerContainerFactory")
     public boolean updateUser(Order order) throws JsonProcessingException {
+        LOGGER.info("update order received from kafka");
         orderService.updateOrder(order);
         LOGGER.info("Update Order -" + order.toString() + " received");
         return true;

@@ -27,6 +27,7 @@ public class DefaultOrderService implements BulkOrderService {
     @Override
     public boolean saveOrder(Order[] orders) throws JsonProcessingException {
         for(Order ord: orders) {
+            LOGGER.info("Before sending saveOrder data to kafka");
             kafkaTemplate.send(createTopicName,ord);
             LOGGER.info("Save Order - "+ord.toString()+"send to kafka topic-"+createTopicName);
         }
@@ -38,6 +39,7 @@ public class DefaultOrderService implements BulkOrderService {
         for(Order ord: orders) {
             ord.setStatus(statusId);
             System.out.println(ord);
+            LOGGER.info("Before sending updateOrder data to kafka");
             kafkaTemplate.send(updateTopicName,ord);
             LOGGER.info("Update Order - "+ord.toString()+"send to kafka topic-"+updateTopicName );
         }
