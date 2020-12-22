@@ -41,8 +41,8 @@ public class DefaultOrderServiceTest {
     @Before
     public void setup(){
         orderList.add(getOrderData.getOrder());
-        Mockito.when(orderRepository.findAllbyId(getOrderData.getOrder().getOrderId()))
-                .thenReturn(orderList);
+        Mockito.when(orderRepository.findById(getOrderData.getOrder().getOrderId()))
+                .thenReturn(java.util.Optional.ofNullable(orderList.get(0)));
         String id =getOrderData.getOrder().getOrderId();
     }
 
@@ -64,7 +64,7 @@ public class DefaultOrderServiceTest {
     public void deleteOrder() {
         String id = orderList.get(0).getOrderId();
 //        boolean ans = orderService.deleteOrder(id);
-
+        
     }
 
     @Test

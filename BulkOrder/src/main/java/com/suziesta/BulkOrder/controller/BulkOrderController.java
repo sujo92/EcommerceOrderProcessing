@@ -5,6 +5,7 @@ import com.suziesta.BulkOrder.model.Order;
 import com.suziesta.BulkOrder.service.BulkOrderService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,13 +18,11 @@ public class BulkOrderController {
     @PostMapping("/order")
     @ApiOperation(value = "add order")
     public boolean createOrders(@RequestBody Order[] order) throws JsonProcessingException {
-        orderService.saveOrder(order);
-        return true;
+        return orderService.saveOrder(order);
     }
 
     @PutMapping("/status/{statusId}")
-    public boolean updateOrders(@PathVariable String statusId, @RequestBody Order[] orders) throws JsonProcessingException {
-        orderService.updateOrders(statusId, orders);
-        return true;
+    public ResponseEntity<String> updateOrders(@PathVariable String statusId, @RequestBody Order[] orders) throws JsonProcessingException {
+        return orderService.updateOrders(statusId, orders);
     }
 }

@@ -45,7 +45,7 @@ public class OrderControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         Order newOrder = getOrderData.getOrder2();
 
-        mvc.perform(MockMvcRequestBuilders.put("/app/order")
+        mvc.perform(MockMvcRequestBuilders.post("/app/order")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsBytes(newOrder))
         )
@@ -65,7 +65,7 @@ public class OrderControllerTest {
     public void updateOrder() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        Order order = getOrderData.getOrder2();
+        Order order = getOrderData.getOrder();
         order.setCustomerId(58);
 
         mvc.perform(MockMvcRequestBuilders.put("/app/order")

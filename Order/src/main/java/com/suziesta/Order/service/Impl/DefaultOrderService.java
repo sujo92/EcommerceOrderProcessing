@@ -34,7 +34,7 @@ public class DefaultOrderService implements OrderService {
     @Override
     public Order getOrderDetails(String id) {
         return  orderRepository.findById(id)
-        .orElseThrow(()-> new ResourceNotFoundException("Order with id"+id+"doesnt exist"));
+        .orElseThrow(()-> new ResourceNotFoundException("Order with id: "+id+" doesnt exist"));
     }
 
     @Override
@@ -43,8 +43,8 @@ public class DefaultOrderService implements OrderService {
             orderRepository.deleteById(id);
         }
         catch (Exception e){
-            new ResourceNotFoundException("Order with id"+id+"doesnt exist");
-            return false;
+            throw new ResourceNotFoundException("Order with id: "+id+" doesnt exist");
+//            return false;
         }
         return true;
     }
@@ -54,7 +54,13 @@ public class DefaultOrderService implements OrderService {
     public boolean updateOrder(Order order) {
         LocalDateTime now = LocalDateTime.now();
         Timestamp timestamp = Timestamp.valueOf(now);
-        orderRepository.updateStatus(order.getOrderId(),timestamp, order.getStatus());
-        return true;
+        if(orderRepository.findById(order.getOrderId()).isPresent()) {
+            orderRepository.updateStatus(order.getOrderId(), timestamp, order.getStatus());
+            return true;
+        }
+        else {
+            throw new ResourceNotFoundException("Order with id: " + order.getOrderId() + " doesnt exist");
+        }
+
     }
 }
