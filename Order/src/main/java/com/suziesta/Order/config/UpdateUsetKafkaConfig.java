@@ -19,6 +19,8 @@ import java.util.Map;
 @EnableKafka
 public class UpdateUsetKafkaConfig {
 
+//    @Value("{spring.kafka.consumer.bootstrap-servers}")
+//    private String kafkaServer;
         private String kafkaServer= "localhost:9092";
 
         @Value("{kafka.consumer.group.id2}")

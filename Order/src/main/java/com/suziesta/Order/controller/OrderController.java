@@ -24,7 +24,7 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/order")
-    @ApiOperation(value = "add order")
+    @ApiOperation(value = "create new order")
     public boolean createOrder(@RequestBody Order order) throws JsonProcessingException {
         orderService.saveOrder(order);
         return true;
@@ -47,7 +47,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/{id}")
-    @ApiOperation(value = "get order by orderid",response= Order.class, responseContainer = "List")
+    @ApiOperation(value = "get order by orderid",response= Order.class)
     public Order getOrder(@PathVariable String id){
         return orderService.getOrderDetails(id);
     }
@@ -59,6 +59,7 @@ public class OrderController {
     }
 
     @PutMapping("/order")
+    @ApiOperation(value = "update order by orderid",response= boolean.class)
     public boolean updateOrder(@RequestBody Order order){
         return orderService.updateOrder(order);
     }
